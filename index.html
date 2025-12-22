@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Premio Sorpresa | Go Pollos Rhosse</title>
 
-<!-- META PARA WHATSAPP / META -->
 <meta name="description" content="Gana una gaseosa gratis de 2L por la compra de un pollo entero a la leña en Go Pollos Rhosse - Trinidad.">
 <meta property="og:title" content="🎉 ¡Sorpresa! Gaseosa Gratis 2L 🍗🔥">
 <meta property="og:description" content="Escaneaste el QR y ganaste una gaseosa gratis de 2L por la compra de un pollo entero.">
@@ -15,9 +13,7 @@
 <meta property="og:locale" content="es_BO">
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
         margin: 0;
@@ -88,9 +84,7 @@
         line-height: 1.4em;
     }
 
-    .detalle strong {
-        color: #ffcc00;
-    }
+    .detalle strong { color: #ffcc00; }
 
     button {
         margin-top: 20px;
@@ -107,7 +101,12 @@
         max-width: 300px;
     }
 
-    button:hover {
+    button:disabled {
+        background: #999;
+        cursor: not-allowed;
+    }
+
+    button:hover:enabled {
         transform: scale(1.05);
         background: #ffd740;
     }
@@ -116,6 +115,17 @@
         margin-top: 12px;
         font-size: 0.9em;
         opacity: 0.9;
+    }
+
+    /* Countdown y Cupos */
+    .countdown, .slots {
+        margin: 12px 0;
+        font-size: 1em;
+        font-weight: bold;
+        background: linear-gradient(90deg, #ffcc00, #ff7a00);
+        padding: 10px;
+        border-radius: 15px;
+        color: #000;
     }
 
     /* Confetti */
@@ -131,27 +141,16 @@
     }
 
     @keyframes fall {
-        to {
-            transform: translateY(110vh) rotate(360deg);
-        }
+        to { transform: translateY(110vh) rotate(360deg); }
     }
 
     /* RESPONSIVE */
     @media (max-width: 480px) {
-        h1 {
-            font-size: 1.6em;
-        }
-        .premio {
-            font-size: 1.1em;
-            padding: 12px;
-        }
-        .emoji {
-            font-size: 2.8em;
-        }
-        button {
-            padding: 12px 20px;
-            font-size: 0.95em;
-        }
+        h1 { font-size: 1.6em; }
+        .premio { font-size: 1.1em; padding: 12px; }
+        .emoji { font-size: 2.8em; }
+        button { padding: 12px 20px; font-size: 0.95em; }
+        .countdown, .slots { font-size: 0.9em; padding: 8px; }
     }
 </style>
 </head>
@@ -159,29 +158,26 @@
 <body>
 
 <div class="card">
-    <!-- LOGO -->
     <img src="logo.png" alt="Go Pollos Rhosse" class="logo">
 
     <div class="emoji">🎉🥤🍗</div>
 
     <h1>¡Sorpresa!</h1>
 
-    <div class="premio">
-        ¡GANASTE UNA GASEOSA GRATIS DE 2L!
-    </div>
+    <div class="premio">¡GANASTE UNA GASEOSA GRATIS DE 2L!</div>
 
     <p class="detalle">
         🔥 Por la compra de <strong>1 POLLO ENTERO A LA LEÑA</strong><br>
         📍 Trinidad
     </p>
 
-    <button onclick="reclamarPremio()">
-        Reclamar mi premio
-    </button>
+    <!-- Countdown y cupos -->
+    <div class="countdown" id="countdown">⏰ Oferta termina en: <span id="timer">00:00:00</span></div>
+    <div class="slots" id="slots">⚡ Cupos disponibles: <span id="cupos">50</span></div>
 
-    <footer>
-        Go Pollos Rhosse • 📞 68972863
-    </footer>
+    <button id="btnPremio" onclick="reclamarPremio()">Reclamar mi premio</button>
+
+    <footer>Go Pollos Rhosse • 📞 68972863</footer>
 </div>
 
 <script>
@@ -200,10 +196,45 @@
         c.style.width = c.style.height = (Math.random() * 8 + 6) + "px";
         document.body.appendChild(c);
     }
+
+    // CUENTA REGRESIVA
+    let endDate = new Date();
+    endDate.setHours(endDate.getHours() + 2); // Cambia aquí la duración
+    function updateCountdown() {
+        let now = new Date();
+        let diff = endDate - now;
+        if(diff < 0) diff = 0;
+        let hours = Math.floor(diff / 1000 / 60 / 60);
+        let minutes = Math.floor((diff / 1000 / 60) % 60);
+        let seconds = Math.floor((diff / 1000) % 60);
+        document.getElementById("timer").textContent =
+            `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+
+        // Desactivar botón si tiempo terminado
+        if(diff <= 0) document.getElementById("btnPremio").disabled = true;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // CUPOS DISPONIBLES
+    let cupos = 50;
+    function updateSlots() {
+        if(cupos > 0){
+            cupos -= Math.floor(Math.random() * 2); // baja 0 o 1
+            if(cupos < 0) cupos = 0;
+            document.getElementById("cupos").textContent = cupos;
+
+            // Desactivar botón si cupos agotados
+            if(cupos === 0) document.getElementById("btnPremio").disabled = true;
+        }
+    }
+    setInterval(updateSlots, 5000);
 </script>
 
 </body>
 </html>
+
+
 
 
 
