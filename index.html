@@ -15,68 +15,76 @@
 <meta property="og:locale" content="es_BO">
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         margin: 0;
         font-family: 'Segoe UI', sans-serif;
         background: radial-gradient(circle at top, #ffcc00, #ff7a00, #000);
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
         color: #fff;
         text-align: center;
+        overflow-x: hidden;
+        padding: 10px;
     }
 
     .card {
-        background: rgba(0,0,0,0.65);
+        background: rgba(0,0,0,0.75);
         border-radius: 25px;
-        padding: 30px 20px;
+        padding: 20px 15px;
+        width: 100%;
         max-width: 420px;
-        width: 92%;
         box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-        animation: zoomIn 0.9s ease;
         border: 3px solid #ffcc00;
+        animation: zoomIn 0.9s ease;
+        position: relative;
         z-index: 2;
     }
 
     @keyframes zoomIn {
-        from { transform: scale(0.4); opacity: 0; }
+        from { transform: scale(0.5); opacity: 0; }
         to { transform: scale(1); opacity: 1; }
     }
 
     .logo {
-        max-width: 160px;
+        max-width: 140px;
+        width: 40%;
         margin-bottom: 12px;
     }
 
     .emoji {
-        font-size: 3.8em;
+        font-size: 3.2em;
         animation: bounce 1.3s infinite;
+        margin-bottom: 12px;
     }
 
     @keyframes bounce {
         0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-15px); }
+        50% { transform: translateY(-12px); }
     }
 
     h1 {
         color: #ffcc00;
-        font-size: 2.2em;
+        font-size: 1.9em;
         margin: 10px 0;
     }
 
     .premio {
         background: linear-gradient(45deg, #d50000, #ff1744);
-        padding: 16px;
+        padding: 14px;
         border-radius: 18px;
-        margin: 18px 0;
-        font-size: 1.3em;
+        margin: 16px 0;
+        font-size: 1.2em;
         font-weight: bold;
     }
 
     .detalle {
-        font-size: 1.05em;
+        font-size: 1em;
         line-height: 1.4em;
     }
 
@@ -85,42 +93,64 @@
     }
 
     button {
-        margin-top: 22px;
+        margin-top: 20px;
         background: #ffcc00;
         color: #000;
         border: none;
-        padding: 15px 30px;
-        font-size: 1.05em;
+        padding: 14px 25px;
+        font-size: 1em;
         font-weight: bold;
         border-radius: 40px;
         cursor: pointer;
         transition: 0.25s;
+        width: 90%;
+        max-width: 300px;
     }
 
     button:hover {
-        transform: scale(1.08);
+        transform: scale(1.05);
         background: #ffd740;
     }
 
     footer {
-        margin-top: 16px;
+        margin-top: 12px;
         font-size: 0.9em;
         opacity: 0.9;
     }
 
+    /* Confetti */
     .confetti {
         position: fixed;
         width: 10px;
         height: 10px;
         top: -10px;
-        animation: fall 4s linear infinite;
+        animation: fall linear infinite;
         opacity: 0.85;
         z-index: 1;
+        pointer-events: none;
     }
 
     @keyframes fall {
         to {
             transform: translateY(110vh) rotate(360deg);
+        }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.6em;
+        }
+        .premio {
+            font-size: 1.1em;
+            padding: 12px;
+        }
+        .emoji {
+            font-size: 2.8em;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 0.95em;
         }
     }
 </style>
@@ -145,7 +175,6 @@
         📍 Trinidad
     </p>
 
-    <!-- BOTÓN CORREGIDO -->
     <button onclick="reclamarPremio()">
         Reclamar mi premio
     </button>
@@ -157,13 +186,12 @@
 
 <script>
     function reclamarPremio() {
-        location.href =
-        "https://wa.me/59168972863?text=Hola%20Go%20Pollos%20Rhosse,%20escane%C3%A9%20el%20QR%20y%20gan%C3%A9%20una%20gaseosa%20gratis%20de%202L%20por%20la%20compra%20de%20un%20pollo%20entero.";
+        location.href = "https://wa.me/59168972863?text=Hola%20Go%20Pollos%20Rhosse,%20escane%C3%A9%20el%20QR%20y%20gan%C3%A9%20una%20gaseosa%20gratis%20de%202L%20por%20la%20compra%20de%20un%20pollo%20entero.";
     }
 
     // Confeti
     const colores = ["#ffcc00", "#ff9800", "#d50000", "#ffffff"];
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 50; i++) {
         const c = document.createElement("div");
         c.className = "confetti";
         c.style.left = Math.random() * 100 + "vw";
@@ -176,5 +204,7 @@
 
 </body>
 </html>
+
+
 
 
