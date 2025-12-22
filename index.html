@@ -13,11 +13,10 @@
 <meta property="og:locale" content="es_BO">
 
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
-
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #ffcc00, #ff7a00, #000);
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:radial-gradient(circle at top,#ffcc00,#ff7a00,#000);
     color:#fff;
     text-align:center;
     min-height:100vh;
@@ -27,12 +26,11 @@ body {
     overflow-x:hidden;
     padding:0;
 }
-
 /* BANNER SUPERIOR */
-.banner {
-    position: fixed;
+.banner{
+    position:fixed;
     top:0; left:0; width:100%;
-    background: linear-gradient(90deg,#ff3d00,#ffea00,#ff1744,#00e5ff);
+    background:linear-gradient(90deg,#ff3d00,#ffea00,#ff1744,#00e5ff);
     background-size:400% 400%;
     animation: gradientBG 3s ease infinite;
     color:#fff;
@@ -45,7 +43,6 @@ body {
     gap:20px;
     font-size:1em;
 }
-
 @keyframes gradientBG{
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
@@ -53,8 +50,8 @@ body {
 }
 
 /* CARD PRINCIPAL */
-.card {
-    background: rgba(0,0,0,0.85);
+.card{
+    background:rgba(0,0,0,0.85);
     border-radius:25px;
     padding:25px 15px;
     width:100%;
@@ -65,16 +62,13 @@ body {
     position:relative;
     z-index:2;
 }
-
 @keyframes zoomIn{
     from{transform:scale(0.5);opacity:0;}
     to{transform:scale(1);opacity:1;}
 }
-
 .logo{max-width:140px;width:40%;margin-bottom:12px;}
 .emoji{font-size:3.2em;animation:bounce 1.3s infinite;margin-bottom:12px;}
 @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-
 h1{color:#ffcc00;font-size:1.9em;margin:10px 0;}
 .premio{background:linear-gradient(45deg,#d50000,#ff1744);padding:14px;border-radius:18px;margin:16px 0;font-size:1.2em;font-weight:bold;}
 .detalle{font-size:1em;line-height:1.4em;}
@@ -96,7 +90,6 @@ button{
 }
 button:disabled{background:#999;cursor:not-allowed;}
 button:hover:enabled{transform:scale(1.05);background:#ffd740;}
-
 footer{margin-top:12px;font-size:0.9em;opacity:0.9;}
 
 /* Confetti */
@@ -108,8 +101,14 @@ footer{margin-top:12px;font-size:0.9em;opacity:0.9;}
 }
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg);}}
 
+/* ALERTA CUPOS */
+@keyframes blink{
+    0%,50%,100%{opacity:1;}
+    25%,75%{opacity:0;}
+}
+
 /* RESPONSIVE */
-@media (max-width:480px){
+@media(max-width:480px){
     h1{font-size:1.6em;}
     .premio{font-size:1.1em;padding:12px;}
     .emoji{font-size:2.8em;}
@@ -118,11 +117,10 @@ footer{margin-top:12px;font-size:0.9em;opacity:0.9;}
 }
 </style>
 </head>
-
 <body>
 
 <div class="banner">
-    ⏰ Termina en: <span id="timer">00:00:00</span> | ⚡ Cupos: <span id="cupos">50</span>
+    ⏰ Termina en: <span id="timer">00:00:00</span> | ⚡ Cupos: <span id="cupos">20</span>
 </div>
 
 <div class="card">
@@ -135,6 +133,10 @@ footer{margin-top:12px;font-size:0.9em;opacity:0.9;}
     <button id="btnPremio" onclick="reclamarPremio()">Reclamar mi premio</button>
     <footer>Go Pollos Rhosse • 📞 68972863</footer>
 </div>
+
+<audio id="alertaAudio">
+    <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
+</audio>
 
 <script>
 function reclamarPremio(){
@@ -154,10 +156,10 @@ for(let i=0;i<50;i++){
 }
 
 // Countdown
-let endDate = new Date(); endDate.setHours(endDate.getHours()+2);
+let endDate=new Date(); endDate.setHours(endDate.getHours()+2);
 function updateCountdown(){
     let now=new Date();
-    let diff=endDate-now; if(diff<0) diff=0;
+    let diff=endDate-now;if(diff<0) diff=0;
     let h=Math.floor(diff/1000/60/60);
     let m=Math.floor((diff/1000/60)%60);
     let s=Math.floor((diff/1000)%60);
@@ -169,20 +171,31 @@ setInterval(updateCountdown,1000); updateCountdown();
 
 // Cupos
 let cupos=20;
+const alertaAudio=document.getElementById("alertaAudio");
 function updateSlots(){
     if(cupos>0){
         cupos-=Math.floor(Math.random()*2);
         if(cupos<0) cupos=0;
         let el=document.getElementById("cupos");
         el.textContent=cupos;
-        if(cupos<=5 && cupos>0){el.style.animation="pulse 0.5s infinite";}
+        // Alerta visual y sonora si <=5
+        if(cupos<=5 && cupos>0){
+            el.style.animation="blink 0.5s infinite";
+            document.getElementById("btnPremio").style.animation="blink 0.5s infinite";
+            alertaAudio.play().catch(()=>{});
+        }else{
+            el.style.animation="";
+            document.getElementById("btnPremio").style.animation="";
+        }
         if(cupos===0) document.getElementById("btnPremio").disabled=true;
     }
 }
 setInterval(updateSlots,5000);
 </script>
+
 </body>
 </html>
+
 
 
 
