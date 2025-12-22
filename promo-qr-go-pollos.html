@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premio Sorpresa | Go Pollos Rhosse</title>
+
+<!-- META PARA WHATSAPP / META -->
+<meta name="description" content="Gana una gaseosa gratis de 2L por la compra de un pollo entero a la leña en Go Pollos Rhosse - Trinidad.">
+<meta property="og:title" content="🎉 ¡Sorpresa! Gaseosa Gratis 2L 🍗🔥">
+<meta property="og:description" content="Escaneaste el QR y ganaste una gaseosa gratis de 2L por la compra de un pollo entero.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_BO">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: radial-gradient(circle at top, #ffcc00, #ff7a00, #000);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+    }
+
+    .card {
+        background: rgba(0,0,0,0.65);
+        border-radius: 25px;
+        padding: 30px 20px;
+        max-width: 420px;
+        width: 92%;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+        animation: zoomIn 0.9s ease;
+        border: 3px solid #ffcc00;
+        z-index: 2;
+    }
+
+    @keyframes zoomIn {
+        from { transform: scale(0.4); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .logo {
+        max-width: 160px;
+        margin-bottom: 12px;
+    }
+
+    .emoji {
+        font-size: 3.8em;
+        animation: bounce 1.3s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+
+    h1 {
+        color: #ffcc00;
+        font-size: 2.2em;
+        margin: 10px 0;
+    }
+
+    .premio {
+        background: linear-gradient(45deg, #d50000, #ff1744);
+        padding: 16px;
+        border-radius: 18px;
+        margin: 18px 0;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+
+    .detalle {
+        font-size: 1.05em;
+        line-height: 1.4em;
+    }
+
+    .detalle strong {
+        color: #ffcc00;
+    }
+
+    button {
+        margin-top: 22px;
+        background: #ffcc00;
+        color: #000;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.05em;
+        font-weight: bold;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: 0.25s;
+    }
+
+    button:hover {
+        transform: scale(1.08);
+        background: #ffd740;
+    }
+
+    footer {
+        margin-top: 16px;
+        font-size: 0.9em;
+        opacity: 0.9;
+    }
+
+    .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        top: -10px;
+        animation: fall 4s linear infinite;
+        opacity: 0.85;
+        z-index: 1;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(360deg);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <!-- LOGO -->
+    <img src="file:///D:/000%20DriveNubeJWC/Desings2025/QR%20PromoPollos/logo.png.png" alt="Go Pollos Rhosse" class="logo">
+
+    <div class="emoji">🎉🥤🍗</div>
+
+    <h1>¡Sorpresa!</h1>
+
+    <div class="premio">
+        ¡GANASTE UNA GASEOSA GRATIS DE 2L!
+    </div>
+
+    <p class="detalle">
+        🔥 Por la compra de <strong>1 POLLO ENTERO A LA LEÑA</strong><br>
+        📍 Trinidad
+    </p>
+
+    <!-- BOTÓN CORREGIDO -->
+    <button onclick="reclamarPremio()">
+        Reclamar mi premio
+    </button>
+
+    <footer>
+        Go Pollos Rhosse • 📞 68972863
+    </footer>
+</div>
+
+<script>
+    function reclamarPremio() {
+        location.href =
+        "https://wa.me/59168972863?text=Hola%20Go%20Pollos%20Rhosse,%20escane%C3%A9%20el%20QR%20y%20gan%C3%A9%20una%20gaseosa%20gratis%20de%202L%20por%20la%20compra%20de%20un%20pollo%20entero.";
+    }
+
+    // Confeti
+    const colores = ["#ffcc00", "#ff9800", "#d50000", "#ffffff"];
+    for (let i = 0; i < 40; i++) {
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+        c.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        c.style.width = c.style.height = (Math.random() * 8 + 6) + "px";
+        document.body.appendChild(c);
+    }
+</script>
+
+</body>
+</html>
