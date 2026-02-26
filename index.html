@@ -306,6 +306,10 @@ footer{
         ⚠️ SOLO 15 PROMOS DISPONIBLES ⚠️
     </div>
 
+    <p style="font-size:1.4em; font-weight:bold; margin:12px 0;">
+    🧨 CUPOS DISPONIBLES: <span id="cupos">25</span>
+</p>
+
     <img src="logo.png" alt="Go Pollos Rhosse" class="logo">
 
     <h1>🔥 DÍA DEL PADRE 🔥</h1>
@@ -325,9 +329,9 @@ footer{
         ⏳ Promoción válida hasta agotar stock
     </p>
 
-    <button onclick="pedirAhora()">
-        📲 PEDIR AHORA POR WHATSAPP
-    </button>
+ <button id="btnPedir" onclick="pedirAhora()">
+    📲 PEDIR AHORA POR WHATSAPP
+</button>
 
     <footer>
         Go Pollos Rhosse • 📞 68972863
@@ -343,9 +347,33 @@ function pedirAhora(){
     location.href="https://wa.me/59168972863?text=Hola,%20quiero%20reservar%20la%20PROMO%20DEL%20DIA%20DEL%20PADRE%20del%20pollo%20entero%20+%20Coca%202L%20gratis.";
 }
 </script>
+<script>
+let cupos = 25;
+const tiempoEntreRestas = 4500; // en milisegundos
 
+function bajarCupos(){
+    if(cupos > 0){
+        cupos--;
+        document.getElementById("cupos").textContent = cupos;
+
+        // Efecto visual si quedan pocos
+        if(cupos <= 10){
+            document.getElementById("cupos").style.color = "#FF3D00";
+            document.getElementById("cupos").style.fontSize = "1.6em";
+        }
+
+        // Si llega a 0, desactivar botón
+        if(cupos === 0){
+            document.getElementById("btnPedir").disabled = true;
+        }
+    }
+}
+
+setInterval(bajarCupos, tiempoEntreRestas);
+</script>
 </body>
 </html>
+
 
 
 
