@@ -120,7 +120,7 @@ footer{margin-top:12px;font-size:0.9em;opacity:0.9;}
 <body>
 
 <div class="banner">
-    ⏰ Termina en: <span id="timer">00:00:00</span> | ⚡ Cupos: <span id="cupos">20</span>
+    ⏰ Termina en: <span id="timer">00:00:00</span> | ⚡ Cupos: <span id="cupos">8</span>
 </div>
 
 <div class="card">
@@ -172,7 +172,7 @@ function updateCountdown(){
 setInterval(updateCountdown,1000); updateCountdown();
 
 // Cupos
-let cupos=20;
+let cupos=8;
 const alertaAudio=document.getElementById("alertaAudio");
 function updateSlots(){
     if(cupos>0){
@@ -197,6 +197,7 @@ setInterval(updateSlots,5000);
 
 </body>
 </html>
+
 
 
 
