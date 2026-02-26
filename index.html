@@ -205,11 +205,11 @@ setInterval(updateSlots,5000);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Promo Día del Padre | Go Pollos Rhosse</title>
+<title>🔥 Promo Día del Padre | Go Pollos Rhosse</title>
 
-<meta name="description" content="Celebra el Día del Padre con Go Pollos Rhosse. Pollo entero a la leña + Coca Cola 2L GRATIS en Trinidad.">
-<meta property="og:title" content="🧔🔥 Promo Especial Día del Padre 🍗">
-<meta property="og:description" content="Sorprende a Papá con un pollo entero a la leña + Coca Cola 2L GRATIS. Promoción limitada.">
+<meta name="description" content="Últimas promos Día del Padre. Pollo entero a la leña + Coca Cola 2L GRATIS en Trinidad. Cupos limitados.">
+<meta property="og:title" content="🔥 ÚLTIMAS PROMOS Día del Padre 🍗">
+<meta property="og:description" content="Solo por hoy: Pollo entero + Coca 2L GRATIS. Reserva antes que se acaben.">
 <meta property="og:image" content="logo.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_BO">
@@ -218,125 +218,131 @@ setInterval(updateSlots,5000);
 *{box-sizing:border-box;margin:0;padding:0;}
 body{
     font-family:'Segoe UI',sans-serif;
-    background:radial-gradient(circle at top,#0d47a1,#1976d2,#000);
+    background:linear-gradient(180deg,#000,#8B0000);
     color:#fff;
     text-align:center;
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow-x:hidden;
+    padding:20px;
 }
 
-/* BANNER SUPERIOR */
-.banner{
-    position:fixed;
-    top:0; left:0; width:100%;
-    background:linear-gradient(90deg,#0d47a1,#1976d2,#ffd700,#0d47a1);
-    background-size:400% 400%;
-    animation: gradientBG 4s ease infinite;
-    font-weight:bold;
-    padding:10px 0;
-    z-index:10;
-    box-shadow:0 4px 6px rgba(0,0,0,0.5);
-}
-@keyframes gradientBG{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-
-/* CARD */
 .card{
-    background:rgba(0,0,0,0.88);
+    background:#111;
     border-radius:25px;
     padding:30px 20px;
     width:100%;
     max-width:420px;
-    box-shadow:0 25px 50px rgba(0,0,0,0.6);
-    border:3px solid #ffd700;
-    animation: zoomIn 0.9s ease;
-}
-@keyframes zoomIn{
-    from{transform:scale(0.5);opacity:0;}
-    to{transform:scale(1);opacity:1;}
+    border:3px solid #FFD700;
+    box-shadow:0 20px 40px rgba(0,0,0,0.7);
 }
 
-.logo{max-width:140px;width:40%;margin-bottom:12px;}
-.emoji{font-size:3em;animation:bounce 1.5s infinite;margin-bottom:12px;}
-@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.alerta{
+    background:#ff0000;
+    padding:8px;
+    border-radius:10px;
+    font-weight:bold;
+    animation:blink 1s infinite;
+    margin-bottom:15px;
+}
+@keyframes blink{
+    0%,50%,100%{opacity:1;}
+    25%,75%{opacity:0.4;}
+}
 
-/* TEXTOS */
-h1{color:#ffd700;font-size:1.8em;margin:10px 0;}
-.premio{
-    background:linear-gradient(45deg,#ffd700,#ff9800);
+.logo{max-width:120px;margin-bottom:10px;}
+h1{color:#FFD700;font-size:1.8em;margin:10px 0;}
+.promo{
+    background:#FFD700;
+    color:#000;
     padding:15px;
-    border-radius:18px;
-    margin:18px 0;
+    border-radius:15px;
+    font-weight:bold;
+    margin:15px 0;
+    font-size:1.1em;
+}
+
+.detalle{
+    font-size:0.95em;
+    opacity:0.9;
+}
+
+.precio{
+    margin:15px 0;
     font-size:1.2em;
     font-weight:bold;
-    color:#000;
 }
-.detalle{font-size:1em;line-height:1.4em;}
-.detalle strong{color:#ffd700;}
 
 button{
-    margin-top:20px;
-    background:#ffd700;
-    color:#000;
+    margin-top:15px;
+    background:#25D366;
+    color:#fff;
     border:none;
-    padding:14px 25px;
+    padding:16px;
     font-size:1em;
     font-weight:bold;
     border-radius:40px;
     cursor:pointer;
-    transition:0.25s;
-    width:90%;
-    max-width:300px;
+    width:100%;
+    transition:0.2s;
 }
-button:hover{transform:scale(1.05);background:#ffea00;}
-footer{margin-top:12px;font-size:0.9em;opacity:0.9;}
+button:hover{
+    transform:scale(1.05);
+}
+
+footer{
+    margin-top:12px;
+    font-size:0.85em;
+    opacity:0.8;
+}
 </style>
 </head>
 <body>
 
-<div class="banner">
-    🎉 PROMO ESPECIAL DÍA DEL PADRE 🎉
-</div>
-
 <div class="card">
+
+    <div class="alerta">
+        ⚠️ SOLO 15 PROMOS DISPONIBLES ⚠️
+    </div>
+
     <img src="logo.png" alt="Go Pollos Rhosse" class="logo">
-    <div class="emoji">🧔🔥🍗</div>
 
-    <h1>¡Papá se lo merece!</h1>
+    <h1>🔥 DÍA DEL PADRE 🔥</h1>
 
-    <div class="premio">
+    <div class="promo">
         🍗 1 POLLO ENTERO A LA LEÑA <br>
         🥤 + COCA COLA 2L GRATIS
     </div>
 
+    <div class="precio">
+        🎉 Regálale algo que sí le gusta a Papá
+    </div>
+
     <p class="detalle">
-        🔥 Promoción válida por tiempo limitado <br>
-        📍 Trinidad - Solo en Go Pollos Rhosse
+        📍 Trinidad<br>
+        ⏳ Promoción válida hasta agotar stock
     </p>
 
-    <button onclick="reclamarPromo()">
-        🎁 Pedir Promo por WhatsApp
+    <button onclick="pedirAhora()">
+        📲 PEDIR AHORA POR WHATSAPP
     </button>
 
     <footer>
         Go Pollos Rhosse • 📞 68972863
     </footer>
+
 </div>
 
 <script>
-function reclamarPromo(){
-    location.href="https://wa.me/59168972863?text=Hola%20Go%20Pollos%20Rhosse,%20quiero%20la%20PROMO%20DEL%20DIA%20DEL%20PADRE%20del%20pollo%20entero%20+%20Coca%202L%20gratis.";
+function pedirAhora(){
+    location.href="https://wa.me/59168972863?text=Hola,%20quiero%20reservar%20la%20PROMO%20DEL%20DIA%20DEL%20PADRE%20del%20pollo%20entero%20+%20Coca%202L%20gratis.";
 }
 </script>
 
 </body>
 </html>
+
 
 
 
