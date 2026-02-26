@@ -349,29 +349,28 @@ function pedirAhora(){
 </script>
 <script>
 let cupos = 25;
-const tiempoEntreRestas = 4500; // en milisegundos
+const tiempoEntreRestas = 4500;
 
 function bajarCupos(){
     if(cupos > 0){
         cupos--;
         document.getElementById("cupos").textContent = cupos;
 
-        // Efecto visual si quedan pocos
         if(cupos <= 10){
             document.getElementById("cupos").style.color = "#FF3D00";
             document.getElementById("cupos").style.fontSize = "1.6em";
         }
 
-        // Si llega a 0, desactivar botón
         if(cupos === 0){
             document.getElementById("btnPedir").disabled = true;
         }
     }
 }
-
 setInterval(bajarCupos, tiempoEntreRestas);
 
-    <script>
+
+/* ===== PANEL OCULTO ===== */
+
 let contadorClicks = 0;
 
 function activarPanel(){
@@ -425,10 +424,7 @@ function aplicarTema(){
 
     cerrarPanel();
 }
-</script>
-    
-</script>
-    <div id="panelTemas" style="
+</script>    <div id="panelTemas" style="
 display:none;
 position:fixed;
 top:50%;
@@ -464,6 +460,7 @@ Cerrar
 </div>
 </body>
 </html>
+
 
 
 
