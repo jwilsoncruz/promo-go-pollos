@@ -1,353 +1,104 @@
-<!--- promo noranl 1 mini 
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premio Sorpresa | Go Pollos Rhosse</title>
-
-<meta name="description" content="Gana una gaseosa MINI gratis por la compra de un cuarto de pollo a la leña en Go Pollos Rhosse - Trinidad.">
-<meta property="og:title" content="🎉 ¡Sorpresa! Gaseosa MINI Gratis 🍗🔥">
-<meta property="og:description" content="Escaneaste el QR y ganaste una gaseosa Mini gratis por la compra de un cuarto de pollo a la leña.">
-<meta property="og:image" content="logo.png">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_BO">
+<title>Promo Go Pollos</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
 body{
-    font-family:'Segoe UI',sans-serif;
-    background:radial-gradient(circle at top,#ffcc00,#ff7a00,#000);
-    color:#fff;
-    text-align:center;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow-x:hidden;
-    padding:0;
-}
-/* BANNER SUPERIOR */
-.banner{
-    position:fixed;
-    top:0; left:0; width:100%;
-    background:linear-gradient(90deg,#ff3d00,#ffea00,#ff1744,#00e5ff);
-    background-size:400% 400%;
-    animation: gradientBG 3s ease infinite;
-    color:#fff;
-    font-weight:bold;
-    padding:10px 0;
-    z-index:10;
-    box-shadow:0 4px 6px rgba(0,0,0,0.5);
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    font-size:1em;
-}
-@keyframes gradientBG{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-
-/* CARD PRINCIPAL */
-.card{
-    background:rgba(0,0,0,0.85);
-    border-radius:25px;
-    padding:25px 15px;
-    width:100%;
-    max-width:420px;
-    box-shadow:0 25px 50px rgba(0,0,0,0.6);
-    border:3px solid #ffcc00;
-    animation: zoomIn 0.9s ease;
-    position:relative;
-    z-index:2;
-}
-@keyframes zoomIn{
-    from{transform:scale(0.5);opacity:0;}
-    to{transform:scale(1);opacity:1;}
-}
-.logo{max-width:140px;width:40%;margin-bottom:12px;}
-.emoji{font-size:3.2em;animation:bounce 1.3s infinite;margin-bottom:12px;}
-@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-h1{color:#ffcc00;font-size:1.9em;margin:10px 0;}
-.premio{background:linear-gradient(45deg,#d50000,#ff1744);padding:14px;border-radius:18px;margin:16px 0;font-size:1.2em;font-weight:bold;}
-.detalle{font-size:1em;line-height:1.4em;}
-.detalle strong{color:#ffcc00;}
-
-button{
-    margin-top:20px;
-    background:#ffcc00;
-    color:#000;
-    border:none;
-    padding:14px 25px;
-    font-size:1em;
-    font-weight:bold;
-    border-radius:40px;
-    cursor:pointer;
-    transition:0.25s;
-    width:90%;
-    max-width:300px;
-}
-button:disabled{background:#999;cursor:not-allowed;}
-button:hover:enabled{transform:scale(1.05);background:#ffd740;}
-footer{margin-top:12px;font-size:0.9em;opacity:0.9;}
-
-/* Confetti */
-.confetti{
-    position: fixed;
-    width: 10px; height:10px; top:-10px;
-    animation: fall linear infinite;
-    opacity:0.85; z-index:1; pointer-events:none;
-}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg);}}
-
-/* ALERTA CUPOS */
-@keyframes blink{
-    0%,50%,100%{opacity:1;}
-    25%,75%{opacity:0;}
-}
-
-/* RESPONSIVE */
-@media(max-width:480px){
-    h1{font-size:1.6em;}
-    .premio{font-size:1.1em;padding:12px;}
-    .emoji{font-size:2.8em;}
-    button{padding:12px 20px;font-size:0.95em;}
-    .banner{font-size:0.9em;gap:10px;}
-}
-</style>
-</head>
-<body>
-
-<div class="banner">
-    ⏰ Termina en: <span id="timer">00:00:00</span> | ⚡ Cupos: <span id="cupos">8</span>
-</div>
-
-<div class="card">
-    <img src="logo.png" alt="Go Pollos Rhosse" class="logo">
-    <div class="emoji">🎉🥤🍗</div>
-    <h1>¡Sorpresa!</h1>
-    <div class="premio">¡GANASTE UNA GASEOSA MINI GRATIS!</div>
-    <!--
-    <div class="premio">¡GANASTE UNA GASEOSA GRATIS DE 2L!</div> -->
-<!---
-    <p class="detalle">🔥 Por la compra de <strong>1 CUARTO DE POLLO A LA LEÑA</strong><br>📍 Trinidad</p>
-
-    <button id="btnPremio" onclick="reclamarPremio()">Reclamar mi premio</button>
-    <footer>Go Pollos Rhosse • 📞 68972863</footer>
-</div>
-
-<audio id="alertaAudio">
-    <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
-</audio>
-
-<script>
-function reclamarPremio(){
-    location.href="https://wa.me/59168972863?text=Hola%20Go%20Pollos%20Rhosse,%20escane%C3%A9%20el%20QR%20y%20gan%C3%A9%20una%20gaseosa%20Mini%20gratis%20por%20la%20compra%20de%20un%20Cuarto%20de%20pollo%20a%20la%20leña.";
-}
-
-// Confetti
-const colores=["#ffcc00","#ff9800","#d50000","#ffffff"];
-for(let i=0;i<50;i++){
-    const c=document.createElement("div");
-    c.className="confetti";
-    c.style.left=Math.random()*100+"vw";
-    c.style.backgroundColor=colores[Math.floor(Math.random()*colores.length)];
-    c.style.animationDuration=(Math.random()*3+2)+"s";
-    c.style.width=c.style.height=(Math.random()*8+6)+"px";
-    document.body.appendChild(c);
-}
-
-// Countdown
-let endDate=new Date(); endDate.setHours(endDate.getHours()+2);
-function updateCountdown(){
-    let now=new Date();
-    let diff=endDate-now;if(diff<0) diff=0;
-    let h=Math.floor(diff/1000/60/60);
-    let m=Math.floor((diff/1000/60)%60);
-    let s=Math.floor((diff/1000)%60);
-    document.getElementById("timer").textContent=
-        `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-    if(diff<=0) document.getElementById("btnPremio").disabled=true;
-}
-setInterval(updateCountdown,1000); updateCountdown();
-
-// Cupos
-let cupos=8;
-const alertaAudio=document.getElementById("alertaAudio");
-function updateSlots(){
-    if(cupos>0){
-        cupos-=Math.floor(Math.random()*2);
-        if(cupos<0) cupos=0;
-        let el=document.getElementById("cupos");
-        el.textContent=cupos;
-        // Alerta visual y sonora si <=5
-        if(cupos<=5 && cupos>0){
-            el.style.animation="blink 0.5s infinite";
-            document.getElementById("btnPremio").style.animation="blink 0.5s infinite";
-            alertaAudio.play().catch(()=>{});
-        }else{
-            el.style.animation="";
-            document.getElementById("btnPremio").style.animation="";
-        }
-        if(cupos===0) document.getElementById("btnPremio").disabled=true;
-    }
-}
-setInterval(updateSlots,5000);
-</script>
-
-</body>
-</html> ---->
-<!----- PROMO DEL DIA DEL PADRE ----->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🔥 Promo Día del Padre | Go Pollos Rhosse</title>
-
-<meta name="description" content="Últimas promos Día del Padre. Pollo entero a la leña + Coca Cola 2L GRATIS en Trinidad. Cupos limitados.">
-<meta property="og:title" content="🔥 ÚLTIMAS PROMOS Día del Padre 🍗">
-<meta property="og:description" content="Solo por hoy: Pollo entero + Coca 2L GRATIS. Reserva antes que se acaben.">
-<meta property="og:image" content="logo.png">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_BO">
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{
-    font-family:'Segoe UI',sans-serif;
+    margin:0;
+    font-family:Arial, sans-serif;
     background:linear-gradient(180deg,#000,#8B0000);
-    color:#fff;
+    color:white;
     text-align:center;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
 }
 
-.card{
-    background:#111;
-    border-radius:25px;
-    padding:30px 20px;
-    width:100%;
-    max-width:420px;
-    border:3px solid #FFD700;
-    box-shadow:0 20px 40px rgba(0,0,0,0.7);
+h1{
+    margin-top:30px;
+    font-size:28px;
 }
 
 .alerta{
-    background:#ff0000;
-    padding:8px;
-    border-radius:10px;
-    font-weight:bold;
-    animation:blink 1s infinite;
-    margin-bottom:15px;
-}
-@keyframes blink{
-    0%,50%,100%{opacity:1;}
-    25%,75%{opacity:0.4;}
-}
-
-.logo{max-width:120px;margin-bottom:10px;}
-h1{color:#FFD700;font-size:1.8em;margin:10px 0;}
-.promo{
     background:#FFD700;
-    color:#000;
-    padding:15px;
-    border-radius:15px;
+    color:black;
+    padding:10px;
     font-weight:bold;
-    margin:15px 0;
-    font-size:1.1em;
-}
-
-.detalle{
-    font-size:0.95em;
-    opacity:0.9;
 }
 
 .precio{
-    margin:15px 0;
-    font-size:1.2em;
-    font-weight:bold;
+    font-size:20px;
+    margin:20px 0;
 }
 
-button{
-    margin-top:15px;
+.btn{
     background:#25D366;
-    color:#fff;
+    padding:15px 25px;
     border:none;
-    padding:16px;
-    font-size:1em;
-    font-weight:bold;
-    border-radius:40px;
+    border-radius:8px;
+    color:white;
+    font-size:18px;
     cursor:pointer;
-    width:100%;
-    transition:0.2s;
-}
-button:hover{
-    transform:scale(1.05);
 }
 
-footer{
-    margin-top:12px;
-    font-size:0.85em;
-    opacity:0.8;
+.cupos{
+    margin-top:15px;
+    font-size:18px;
+}
+
+.panel{
+    display:none;
+    position:fixed;
+    top:20%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:10px;
 }
 </style>
 </head>
-<body>
 
-<div class="card">
+<body onclick="activarPanel()">
 
-    <div class="alerta">
-        ⚠️ SOLO 15 PROMOS DISPONIBLES ⚠️
-    </div>
+<h1>🔥 DÍA DEL PADRE 🔥</h1>
 
-    <p style="font-size:1.4em; font-weight:bold; margin:12px 0;">
-    🧨 CUPOS DISPONIBLES: <span id="cupos">25</span>
-</p>
+<div class="alerta">
+⚠️ SOLO PROMOS PARA PAPÁ ⚠️
+</div>
 
-    <img src="logo.png" class="logo" onclick="activarPanel()">
+<div class="precio" id="mensajePromo">
+🎉 Regálale algo que sí le gusta a Papá
+</div>
 
-    <h1>🔥 DÍA DEL PADRE 🔥</h1>
-
-    <div class="promo">
-        🍗 1 POLLO ENTERO A LA LEÑA <br>
-        🥤 + COCA COLA 2L GRATIS<br>
-        🛵 + Delivery GRATIS
-    </div>
-
-   <div class="precio" id="mensajePromo">
-
-    <p class="detalle">
-        📍 Trinidad - Beni - Bolivia<br>
-        ⏳ Promoción válida hasta agotar stock
-    </p>
-
- <button id="btnPedir" onclick="pedirAhora()">
-    📲 PEDIR AHORA POR WHATSAPP
+<button class="btn" id="btnPedir">
+📲 PEDIR AHORA
 </button>
 
-    <footer>
-        Go Pollos Rhosse • 📞 68972863 <br>
-        🌐 <a href="https://jwilsoncruz.github.io/promo-go-pollos/" target="_blank" style="color:#FFD700; text-decoration:none;">
-        Visita nuestra web
-    </a>
-    </footer>
+<div class="cupos">
+⏳ Cupos disponibles: <span id="cupos">25</span>
+</div>
 
+<!-- PANEL OCULTO -->
+<div class="panel" id="panelTemas">
+<h3>Seleccionar Temática</h3>
+<select id="selectorTema">
+<option value="padre">Día del Padre</option>
+<option value="madre">Día de la Madre</option>
+<option value="enamorados">San Valentín</option>
+<option value="navidad">Navidad</option>
+<option value="patria">Fiestas Patrias</option>
+</select>
+<br><br>
+<button onclick="aplicarTema()">Aplicar</button>
+<button onclick="cerrarPanel()">Cerrar</button>
 </div>
 
 <script>
-function pedirAhora(){
-    location.href="https://wa.me/59168972863?text=Hola,%20quiero%20reservar%20la%20PROMO%20DEL%20DIA%20DEL%20PADRE%20del%20pollo%20entero%20+%20Coca%202L%20gratis.";
-}
-</script>
-<script>
+
+/* ===== CONTADOR CUPOS ===== */
 let cupos = 25;
-const tiempoEntreRestas = 4500;
 
 function bajarCupos(){
     if(cupos > 0){
@@ -355,8 +106,7 @@ function bajarCupos(){
         document.getElementById("cupos").textContent = cupos;
 
         if(cupos <= 10){
-            document.getElementById("cupos").style.color = "#FF3D00";
-            document.getElementById("cupos").style.fontSize = "1.6em";
+            document.getElementById("cupos").style.color = "yellow";
         }
 
         if(cupos === 0){
@@ -364,11 +114,11 @@ function bajarCupos(){
         }
     }
 }
-setInterval(bajarCupos, tiempoEntreRestas);
+
+setInterval(bajarCupos, 4500);
 
 
 /* ===== PANEL OCULTO ===== */
-
 let contadorClicks = 0;
 
 function activarPanel(){
@@ -383,7 +133,6 @@ function cerrarPanel(){
     document.getElementById("panelTemas").style.display = "none";
 }
 
-<script>
 function aplicarTema(){
     let tema = document.getElementById("selectorTema").value;
 
@@ -429,62 +178,8 @@ function aplicarTema(){
 
     cerrarPanel();
 }
-</script>    <div id="panelTemas" style="
-display:none;
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#111;
-padding:20px;
-border-radius:15px;
-z-index:9999;
-box-shadow:0 0 20px #000;
-text-align:center;
-">
-<h3 style="color:#FFD700;margin-bottom:10px;">Cambiar Temática</h3>
 
-<select id="selectorTema" style="padding:8px;border-radius:8px;">
-<option value="madre">Día de la Madre</option>
-<option value="padre">Día del Padre</option>
-<option value="enamorados">San Valentín</option>
-<option value="navidad">Navidad</option>
-<option value="patria">Fiestas Patrias</option>
-</select>
+</script>
 
-<br><br>
-
-<button onclick="aplicarTema()" style="padding:8px 15px;border-radius:8px;">
-Aplicar
-</button>
-
-<br><br>
-<button onclick="cerrarPanel()" style="background:red;color:white;padding:5px 10px;border:none;border-radius:8px;">
-Cerrar
-</button>
-</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
