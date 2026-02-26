@@ -320,9 +320,7 @@ footer{
         🛵 + Delivery GRATIS
     </div>
 
-    <div class="precio">
-        🎉 Regálale algo que sí le gusta a Papá
-    </div>
+   <div class="precio" id="mensajePromo">
 
     <p class="detalle">
         📍 Trinidad - Beni - Bolivia<br>
@@ -385,41 +383,48 @@ function cerrarPanel(){
     document.getElementById("panelTemas").style.display = "none";
 }
 
+<script>
 function aplicarTema(){
     let tema = document.getElementById("selectorTema").value;
 
     const titulo = document.querySelector("h1");
     const alerta = document.querySelector(".alerta");
     const body = document.body;
+    const mensaje = document.getElementById("mensajePromo");
 
     if(tema === "madre"){
         body.style.background = "linear-gradient(180deg,#4a001f,#b30059)";
         titulo.innerHTML = "🌸 DÍA DE LA MADRE 🌸";
         alerta.innerHTML = "💐 SOLO PROMOS PARA MAMÁ 💐";
+        mensaje.innerHTML = "👑 Regálale algo especial a Mamá";
     }
 
     if(tema === "padre"){
         body.style.background = "linear-gradient(180deg,#000,#8B0000)";
         titulo.innerHTML = "🔥 DÍA DEL PADRE 🔥";
         alerta.innerHTML = "⚠️ SOLO PROMOS PARA PAPÁ ⚠️";
+        mensaje.innerHTML = "🎉 Regálale algo que sí le gusta a Papá";
     }
 
     if(tema === "enamorados"){
         body.style.background = "linear-gradient(180deg,#800000,#ff0033)";
         titulo.innerHTML = "❤️ SAN VALENTÍN ❤️";
         alerta.innerHTML = "💘 PROMO PARA ENAMORADOS 💘";
+        mensaje.innerHTML = "💖 Comparte algo delicioso con tu persona especial";
     }
 
     if(tema === "navidad"){
         body.style.background = "linear-gradient(180deg,#003300,#cc0000)";
         titulo.innerHTML = "🎄 NAVIDAD 🎄";
         alerta.innerHTML = "🎁 PROMO NAVIDEÑA 🎁";
+        mensaje.innerHTML = "🎅 Celebra en familia con sabor navideño";
     }
 
     if(tema === "patria"){
         body.style.background = "linear-gradient(180deg,#d52b1e,#ffd700,#007a33)";
         titulo.innerHTML = "🇧🇴 FIESTAS PATRIAS 🇧🇴";
         alerta.innerHTML = "🎉 PROMO BOLIVIANA 🎉";
+        mensaje.innerHTML = "🇧🇴 Celebra con orgullo y sabor boliviano";
     }
 
     cerrarPanel();
@@ -460,6 +465,7 @@ Cerrar
 </div>
 </body>
 </html>
+
 
 
 
