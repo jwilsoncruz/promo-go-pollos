@@ -1,3 +1,4 @@
+<!--- promo noranl 1 mini 
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -130,6 +131,7 @@ footer{margin-top:12px;font-size:0.9em;opacity:0.9;}
     <div class="premio">¡GANASTE UNA GASEOSA MINI GRATIS!</div>
     <!--
     <div class="premio">¡GANASTE UNA GASEOSA GRATIS DE 2L!</div> -->
+<!---
     <p class="detalle">🔥 Por la compra de <strong>1 CUARTO DE POLLO A LA LEÑA</strong><br>📍 Trinidad</p>
 
     <button id="btnPremio" onclick="reclamarPremio()">Reclamar mi premio</button>
@@ -193,6 +195,144 @@ function updateSlots(){
     }
 }
 setInterval(updateSlots,5000);
+</script>
+
+</body>
+</html> ---->
+<!----- PROMO DEL DIA DEL PADRE ----->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promo Día del Padre | Go Pollos Rhosse</title>
+
+<meta name="description" content="Celebra el Día del Padre con Go Pollos Rhosse. Pollo entero a la leña + Coca Cola 2L GRATIS en Trinidad.">
+<meta property="og:title" content="🧔🔥 Promo Especial Día del Padre 🍗">
+<meta property="og:description" content="Sorprende a Papá con un pollo entero a la leña + Coca Cola 2L GRATIS. Promoción limitada.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_BO">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:radial-gradient(circle at top,#0d47a1,#1976d2,#000);
+    color:#fff;
+    text-align:center;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+}
+
+/* BANNER SUPERIOR */
+.banner{
+    position:fixed;
+    top:0; left:0; width:100%;
+    background:linear-gradient(90deg,#0d47a1,#1976d2,#ffd700,#0d47a1);
+    background-size:400% 400%;
+    animation: gradientBG 4s ease infinite;
+    font-weight:bold;
+    padding:10px 0;
+    z-index:10;
+    box-shadow:0 4px 6px rgba(0,0,0,0.5);
+}
+@keyframes gradientBG{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* CARD */
+.card{
+    background:rgba(0,0,0,0.88);
+    border-radius:25px;
+    padding:30px 20px;
+    width:100%;
+    max-width:420px;
+    box-shadow:0 25px 50px rgba(0,0,0,0.6);
+    border:3px solid #ffd700;
+    animation: zoomIn 0.9s ease;
+}
+@keyframes zoomIn{
+    from{transform:scale(0.5);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+.logo{max-width:140px;width:40%;margin-bottom:12px;}
+.emoji{font-size:3em;animation:bounce 1.5s infinite;margin-bottom:12px;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+/* TEXTOS */
+h1{color:#ffd700;font-size:1.8em;margin:10px 0;}
+.premio{
+    background:linear-gradient(45deg,#ffd700,#ff9800);
+    padding:15px;
+    border-radius:18px;
+    margin:18px 0;
+    font-size:1.2em;
+    font-weight:bold;
+    color:#000;
+}
+.detalle{font-size:1em;line-height:1.4em;}
+.detalle strong{color:#ffd700;}
+
+button{
+    margin-top:20px;
+    background:#ffd700;
+    color:#000;
+    border:none;
+    padding:14px 25px;
+    font-size:1em;
+    font-weight:bold;
+    border-radius:40px;
+    cursor:pointer;
+    transition:0.25s;
+    width:90%;
+    max-width:300px;
+}
+button:hover{transform:scale(1.05);background:#ffea00;}
+footer{margin-top:12px;font-size:0.9em;opacity:0.9;}
+</style>
+</head>
+<body>
+
+<div class="banner">
+    🎉 PROMO ESPECIAL DÍA DEL PADRE 🎉
+</div>
+
+<div class="card">
+    <img src="logo.png" alt="Go Pollos Rhosse" class="logo">
+    <div class="emoji">🧔🔥🍗</div>
+
+    <h1>¡Papá se lo merece!</h1>
+
+    <div class="premio">
+        🍗 1 POLLO ENTERO A LA LEÑA <br>
+        🥤 + COCA COLA 2L GRATIS
+    </div>
+
+    <p class="detalle">
+        🔥 Promoción válida por tiempo limitado <br>
+        📍 Trinidad - Solo en Go Pollos Rhosse
+    </p>
+
+    <button onclick="reclamarPromo()">
+        🎁 Pedir Promo por WhatsApp
+    </button>
+
+    <footer>
+        Go Pollos Rhosse • 📞 68972863
+    </footer>
+</div>
+
+<script>
+function reclamarPromo(){
+    location.href="https://wa.me/59168972863?text=Hola%20Go%20Pollos%20Rhosse,%20quiero%20la%20PROMO%20DEL%20DIA%20DEL%20PADRE%20del%20pollo%20entero%20+%20Coca%202L%20gratis.";
+}
 </script>
 
 </body>
