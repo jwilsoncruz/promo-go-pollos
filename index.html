@@ -310,7 +310,7 @@ footer{
     🧨 CUPOS DISPONIBLES: <span id="cupos">25</span>
 </p>
 
-    <img src="logo.png" alt="Go Pollos Rhosse" class="logo">
+    <img src="logo.png" class="logo" onclick="activarPanel()">
 
     <h1>🔥 DÍA DEL PADRE 🔥</h1>
 
@@ -370,9 +370,101 @@ function bajarCupos(){
 }
 
 setInterval(bajarCupos, tiempoEntreRestas);
+
+    <script>
+let contadorClicks = 0;
+
+function activarPanel(){
+    contadorClicks++;
+    if(contadorClicks >= 5){
+        document.getElementById("panelTemas").style.display = "block";
+        contadorClicks = 0;
+    }
+}
+
+function cerrarPanel(){
+    document.getElementById("panelTemas").style.display = "none";
+}
+
+function aplicarTema(){
+    let tema = document.getElementById("selectorTema").value;
+
+    const titulo = document.querySelector("h1");
+    const alerta = document.querySelector(".alerta");
+    const body = document.body;
+
+    if(tema === "madre"){
+        body.style.background = "linear-gradient(180deg,#4a001f,#b30059)";
+        titulo.innerHTML = "🌸 DÍA DE LA MADRE 🌸";
+        alerta.innerHTML = "💐 SOLO PROMOS PARA MAMÁ 💐";
+    }
+
+    if(tema === "padre"){
+        body.style.background = "linear-gradient(180deg,#000,#8B0000)";
+        titulo.innerHTML = "🔥 DÍA DEL PADRE 🔥";
+        alerta.innerHTML = "⚠️ SOLO PROMOS PARA PAPÁ ⚠️";
+    }
+
+    if(tema === "enamorados"){
+        body.style.background = "linear-gradient(180deg,#800000,#ff0033)";
+        titulo.innerHTML = "❤️ SAN VALENTÍN ❤️";
+        alerta.innerHTML = "💘 PROMO PARA ENAMORADOS 💘";
+    }
+
+    if(tema === "navidad"){
+        body.style.background = "linear-gradient(180deg,#003300,#cc0000)";
+        titulo.innerHTML = "🎄 NAVIDAD 🎄";
+        alerta.innerHTML = "🎁 PROMO NAVIDEÑA 🎁";
+    }
+
+    if(tema === "patria"){
+        body.style.background = "linear-gradient(180deg,#d52b1e,#ffd700,#007a33)";
+        titulo.innerHTML = "🇧🇴 FIESTAS PATRIAS 🇧🇴";
+        alerta.innerHTML = "🎉 PROMO BOLIVIANA 🎉";
+    }
+
+    cerrarPanel();
+}
 </script>
+    
+</script>
+    <div id="panelTemas" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#111;
+padding:20px;
+border-radius:15px;
+z-index:9999;
+box-shadow:0 0 20px #000;
+text-align:center;
+">
+<h3 style="color:#FFD700;margin-bottom:10px;">Cambiar Temática</h3>
+
+<select id="selectorTema" style="padding:8px;border-radius:8px;">
+<option value="madre">Día de la Madre</option>
+<option value="padre">Día del Padre</option>
+<option value="enamorados">San Valentín</option>
+<option value="navidad">Navidad</option>
+<option value="patria">Fiestas Patrias</option>
+</select>
+
+<br><br>
+
+<button onclick="aplicarTema()" style="padding:8px 15px;border-radius:8px;">
+Aplicar
+</button>
+
+<br><br>
+<button onclick="cerrarPanel()" style="background:red;color:white;padding:5px 10px;border:none;border-radius:8px;">
+Cerrar
+</button>
+</div>
 </body>
 </html>
+
 
 
 
