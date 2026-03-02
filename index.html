@@ -366,7 +366,7 @@ function pedirAhora(){
 </script>
 <script>
 let cupos = 24;
-const tiempoEntreRestas = 4500; // en milisegundos
+
 
 function bajarCupos(){
     if(cupos > 0){
@@ -386,7 +386,21 @@ function bajarCupos(){
     }
 }
 
-setInterval(bajarCupos, tiempoEntreRestas);
+/* 👇 PEGA ESTO AQUÍ 👇 */
+function iniciarRestaAleatoria(){
+
+    if(cupos > 0){
+
+        const tiempoAleatorio = Math.floor(Math.random() * (35000 - 15000 + 1)) + 15000;
+
+        setTimeout(function(){
+            bajarCupos();
+            iniciarRestaAleatoria();
+        }, tiempoAleatorio);
+    }
+}
+
+iniciarRestaAleatoria();
 
 
 let contadorClicks = 0;
@@ -482,6 +496,7 @@ Cerrar
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
+
 
 
 
