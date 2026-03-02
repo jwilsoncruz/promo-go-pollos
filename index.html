@@ -296,6 +296,12 @@ footer{
     font-size:0.85em;
     opacity:0.8;
 }
+
+    @keyframes pulseBtn {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
 </style>
 </head>
 <body>
@@ -456,7 +462,72 @@ function aplicarTema(){
 
     cerrarPanel();
 }
-</script>
+
+    /* ===============================
+   MEJORAS PRO CONVERSIÓN
+   =============================== */
+
+// 👉 Animación botón
+const btn = document.getElementById("btnPedir");
+btn.style.animation = "pulseBtn 2s infinite";
+
+// 👉 Agregar texto prueba social debajo del botón
+const pruebaSocial = document.createElement("p");
+pruebaSocial.innerHTML = "🔥 Más de 120 clientes ya aprovecharon esta promo hoy";
+pruebaSocial.style.marginTop = "10px";
+pruebaSocial.style.fontSize = "0.85em";
+pruebaSocial.style.opacity = "0.8";
+btn.parentNode.insertBefore(pruebaSocial, btn.nextSibling);
+
+// 👉 Mejorar mensaje WhatsApp + confetti + delay móvil
+function pedirAhora(){
+
+    btn.disabled = true;
+    btn.innerHTML = "🎉 Enviando a WhatsApp...";
+
+    // Confetti potente
+    confetti({
+        particleCount: 220,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+
+    setTimeout(function(){
+
+        const mensaje = "Hola, quiero asegurar mi promo antes que se acaben los cupos 🔥\n1 Pollo Entero + Coca Cola 2L + Delivery GRATIS";
+
+        const url = "https://wa.me/59168972863?text=" + encodeURIComponent(mensaje);
+
+        window.location.href = url;
+
+    }, 1500);
+}
+
+// 👉 Urgencia avanzada cuando queden pocos cupos
+function verificarUrgencia(){
+
+    const alerta = document.querySelector(".alerta");
+    const cuposSpan = document.getElementById("cupos");
+
+    if(cupos <= 5 && cupos > 0){
+        alerta.innerHTML = "⚠️ ÚLTIMOS 5 DISPONIBLES ⚠️";
+        alerta.style.background = "#ff0000";
+        cuposSpan.style.fontSize = "1.8em";
+
+        confetti({
+            particleCount: 80,
+            spread: 100,
+            origin: { y: 0.7 }
+        });
+    }
+}
+
+// Modificar bajarCupos para incluir urgencia
+const bajarOriginal = bajarCupos;
+bajarCupos = function(){
+    bajarOriginal();
+    verificarUrgencia();
+};
     
 </script>
     <div id="panelTemas" style="
@@ -496,6 +567,7 @@ Cerrar
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
+
 
 
 
