@@ -329,8 +329,8 @@ footer{
         ⏳ Promoción válida hasta agotar stock
     </p>
 
- <button id="btnPedir" onclick="pedirAhora()">
-    📲 PEDIR AHORA POR WHATSAPP
+<button id="btnPedir" onclick="pedirAhora()">
+📲 PEDIR AHORA POR WHATSAPP
 </button>
 
     <footer>
@@ -344,7 +344,24 @@ footer{
 
 <script>
 function pedirAhora(){
-    location.href="https://wa.me/59168972863?text=Hola,%20%2APollos%20a%20la%20Le%C3%B1a%20%7C%20Go%20Pollos%20Rhosse%2A,%0AQuiero%20Reservar%20el%20%2ACOMBO%20DEL%20DIA%20DEL%20PADRE%2A:%0A1%20Pollo%20Entero%20a%20la%20Le%C3%B1a%20%2B%201%20Coca-Cola%20de%202%20litros%20%2B%20Delivery%20GRATIS";
+
+    // Lanzar confetti
+    confetti({
+        particleCount: 180,
+        spread: 90,
+        origin: { y: 0.6 }
+    });
+
+    // Esperar 900ms antes de abrir WhatsApp
+    setTimeout(function(){
+
+        const mensaje = "Hola, Pollos a la Leña | Go Pollos Rhosse.\nQuiero reservar el COMBO DEL DIA DEL PADRE:\n1 Pollo Entero + 1 Coca-Cola 2L + Delivery GRATIS";
+
+        const url = "https://wa.me/59168972863?text=" + encodeURIComponent(mensaje);
+
+        window.location.href = url;
+
+    }, 900);
 }
 </script>
 <script>
@@ -465,6 +482,7 @@ Cerrar
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
+
 
 
 
