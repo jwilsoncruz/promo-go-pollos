@@ -612,8 +612,58 @@ Cerrar
 </button>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+
+/* ===============================
+SIMULACIÓN DE PEDIDOS EN VIVO
+=============================== */
+
+const nombresPedidos = [
+"Carlos","María","Juan","Luis","Ana","Pedro","Jorge","Mario","Sofía","Ricardo"
+];
+
+function pedidoFalso(){
+
+const nombre = nombresPedidos[Math.floor(Math.random()*nombresPedidos.length)];
+
+const aviso = document.createElement("div");
+
+aviso.innerHTML = "🔥 " + nombre + " acaba de pedir esta promo";
+
+aviso.style.position = "fixed";
+aviso.style.bottom = "20px";
+aviso.style.left = "20px";
+aviso.style.background = "#111";
+aviso.style.padding = "10px 15px";
+aviso.style.borderRadius = "10px";
+aviso.style.fontSize = "0.85em";
+aviso.style.boxShadow = "0 0 10px rgba(0,0,0,0.6)";
+aviso.style.zIndex = "9999";
+aviso.style.color = "#fff";
+
+document.body.appendChild(aviso);
+
+setTimeout(function(){
+aviso.remove();
+},4000);
+
+}
+
+// esperar 10 segundos antes de empezar
+setTimeout(function(){
+
+setInterval(function(){
+pedidoFalso();
+bajarCupos();
+},20000);
+
+},10000);
+
+</script>
+
 </body>
 </html>
+
 
 
 
