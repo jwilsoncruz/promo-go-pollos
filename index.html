@@ -540,6 +540,41 @@ bajarCupos = function(){
     bajarOriginal();
     verificarUrgencia();
 };
+    /* ===============================
+   SIMULACIÓN DE PEDIDOS EN VIVO
+   =============================== */
+
+const nombres = [
+"Carlos","María","Juan","Luis","Ana","Pedro","Jorge","Mario","Sofía","Ricardo"
+];
+
+function pedidoFalso(){
+
+const nombre = nombres[Math.floor(Math.random()*nombres.length)];
+
+const aviso = document.createElement("div");
+
+aviso.innerHTML = "🔥 " + nombre + " acaba de pedir esta promo";
+
+aviso.style.position = "fixed";
+aviso.style.bottom = "20px";
+aviso.style.left = "20px";
+aviso.style.background = "#111";
+aviso.style.padding = "10px 15px";
+aviso.style.borderRadius = "10px";
+aviso.style.fontSize = "0.85em";
+aviso.style.boxShadow = "0 0 10px rgba(0,0,0,0.6)";
+aviso.style.zIndex = "9999";
+
+document.body.appendChild(aviso);
+
+setTimeout(()=>{
+aviso.remove();
+},4000);
+
+}
+
+setInterval(pedidoFalso,20000);
     
 </script>
     <div id="panelTemas" style="
@@ -579,6 +614,7 @@ Cerrar
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
+
 
 
 
