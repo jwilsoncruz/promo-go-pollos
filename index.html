@@ -614,9 +614,13 @@ Cerrar
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
 
+<script>
+
 /* ===============================
-SIMULACIÓN DE PEDIDOS EN VIVO
+SIMULACIÓN DE PEDIDOS (VERSIÓN MÓVIL)
 =============================== */
+
+document.addEventListener("DOMContentLoaded", function(){
 
 const nombresPedidos = [
 "Carlos","María","Juan","Luis","Ana","Pedro","Jorge","Mario","Sofía","Ricardo"
@@ -636,7 +640,7 @@ aviso.style.left = "20px";
 aviso.style.background = "#111";
 aviso.style.padding = "10px 15px";
 aviso.style.borderRadius = "10px";
-aviso.style.fontSize = "0.85em";
+aviso.style.fontSize = "14px";
 aviso.style.boxShadow = "0 0 10px rgba(0,0,0,0.6)";
 aviso.style.zIndex = "9999";
 aviso.style.color = "#fff";
@@ -649,20 +653,28 @@ aviso.remove();
 
 }
 
-// esperar 10 segundos antes de empezar
+// esperar un poco para que cargue en móvil
 setTimeout(function(){
 
 setInterval(function(){
+
 pedidoFalso();
+
+if(typeof bajarCupos === "function"){
 bajarCupos();
+}
+
 },20000);
 
-},10000);
+},8000);
+
+});
 
 </script>
 
 </body>
 </html>
+
 
 
 
